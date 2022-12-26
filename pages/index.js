@@ -80,7 +80,7 @@ function Chatbox() {
       <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
         <div className=" sm:px-16 text-center">
           <p className="font-medium text-white">
-            <span className=" inline ">The personalized DeCesare recipe builder</span>
+            <span className=" inline ">The DeCesare recipe builder</span>
             <button 
             className='fixed top-1 right-1 px-2 py-2 bg-blue-900 dark:bg-blue-200 text-white dark:text-black rounded-lg'
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}

@@ -20,7 +20,7 @@ export default function TypeSelect({type, setType, setChatHistory, setMessage, s
       <select
         id="site"
         name="site"
-        className=' block sm:w-half outline outline-gray-500 w-half rounded-md focus:outline-indigo-500 py-2 pl-3 pr-10 text-base focus:border-blue-600 focus:ring-indigo-500 sm:text-sm'
+        className=' block w-half outline rounded-md focus:outline-indigo-500 py-2 pl-3 pr-10 text-base focus:border-blue-600 focus:ring-indigo-500 sm:text-sm'
         value={type}
         
         onChange={setTypeRefresh}
