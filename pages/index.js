@@ -13,7 +13,7 @@ function Chatbox() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false)
   const [chatHistory, setChatHistory] = useState('')
-  const [type, setType] = useState('Derick')
+  const [type, setType] = useState('Keto')
   const {theme, setTheme} = useTheme();
   let contextChat = '';
 

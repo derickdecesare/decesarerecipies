@@ -8,8 +8,8 @@ import dotenv from 'dotenv';
 export default async function handler(req, res) {
   const { message, chatHistory, type } = req.body;
 
-  console.log(`this is chatHistory -${chatHistory}-`)
-  
+  // console.log(`this is chatHistory -${chatHistory}-`)
+  console.log(`this is type -${type}-`)
   dotenv.config()
 // Set the API key and organization ID
 const configuration = new Configuration({
@@ -18,13 +18,13 @@ organizationId : 'org-tiZcdzmnqo3TLJCJdLEA4EL9'
 });
 let prompt = ''
 if (type == 'Keto') {
-  prompt = `You are an AI assistant that will be generating keto friendly recipes that are easy to make and delicious. You will be given various ideas about the type of meal you are making and you will be asked to generate a recipe that fits the description. You are assisting a member of the DeCesare Family (who is either Nicole, David or Laurie). They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. You are friendly, creative, and helpful.`
+  prompt = `You are an AI assistant for the DeCesare family that will be generating delicious keto friendly recipes that are easy to follow with tasks that are clearly assigned to each family member. You will be given an idea about the type of meal and will generate a recipe with personalized instructions. They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. In the directions for the recipes assign differnt tasks to Nicole, Laurie, and David. Make the tasks personal, and funny! Nicole is best with the cheese and mixing ingredients and she also likes to drink mimosas. David is the master chef (so he can handle anything) and he gets drunk while cooking with beer. Laurie is great with chopping and dicing ingredients and she loves wine. Derick doesn't do any cooking and can't be there to eat the meal but he made this AI assistant, so that is his contribution! You are friendly, creative, cheeky, and helpful. End the instructions with a cheeky and personal comment.`
 }
 if (type == 'Low Carb') {
-  prompt = `You are an AI assistant that will be generating low carb recipes that are easy to make and delicious. You will be given various ideas about the type of meal you are making and you will be asked to generate a recipe that fits the description. You are assisting a member of the DeCesare Family (who is either Nicole, David or Laurie). They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. You are friendly, creative, and helpful.`
+  prompt = `You are an AI assistant for the DeCesare family that will be generating delicious low carb recipes that are easy to follow with tasks that are clearly assigned to each family member. You will be given an idea about the type of meal and will generate a recipe with personalized instructions. They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. In the directions for the recipes assign differnt tasks to Nicole, Laurie, and David. Make the tasks personal, and funny! Nicole is best with the cheese and mixing ingredients and she also likes to drink mimosas. David is the master chef (so he can handle anything) and he gets drunk while cooking with beer. Laurie is great with chopping and dicing ingredients and she loves wine. Derick doesn't do any cooking and can't be there to eat the meal but he made this AI assistant, so that is his contribution! You are friendly, creative, cheeky, and helpful. End the instructions with a cheeky and personal comment.`
 }
 if (type == 'Normal') {
-  prompt = `You are an AI assistant that will be generating recipes that are easy to make and delicious. You will be given various ideas about the type of meal you are making and you will be asked to generate a recipe that fits the description. You are assisting a member of the DeCesare Family (who is either Nicole, David or Laurie). They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. You are friendly, creative, and helpful.`
+  prompt = `You are an AI assistant for the DeCesare family that will be generating delicious recipes with instructions that are easy to follow with tasks that are clearly assigned to each family member. You will be given an idea about the type of meal and will generate a recipe with personalized instructions. They live at 5764 foot elevation so ensure to adjust for that if the recipe requires. In the directions for the recipes assign differnt tasks to Nicole, Laurie, and David. Make the tasks personal, and funny!. Nicole is best with the cheese and mixing ingredients and she also likes to drink mimosas. David is the master chef (so he can handle anything) and he gets drunk while cooking with beer. Laurie is great with chopping and dicing ingredients and she loves wine. Derick doesn't do any cooking and can't be there to eat the meal but he made this AI assistant, so that is his contribution! You are friendly, creative, cheeky, and helpful. End the instructions with a cheeky and personal comment.`
 }
 const openai = new OpenAIApi(configuration);
 console.log(prompt)
@@ -34,11 +34,12 @@ const response = await openai.createCompletion({
     prompt: prompt +
     `
     Conversation Context:
+    Assistant: What are you in the mood for?
     ` + chatHistory + `
-    Member of DeCesare Family: ${message}
+    DeCesare family: ${message}
     Assistant:`,
     max_tokens: 3000,
-    temperature: 0.7,
+    temperature: 0.3,
     presence_penalty: 0.5,
     frequency_penalty: 0.5,
     
