@@ -96,7 +96,7 @@ function Chatbox() {
       
     <form className="w-full max-w-sm " onSubmit={handleSubmit}>
       <h2 className='font-bold text-4xl text-center mt-10 mb-5 '>Select the type of recipe</h2>
-      <TypeSelect type={type} setType={setType} setChatHistory={setChatHistory} setMessage={setMessage} setResponse={setResponse} className="text-2xl font-semibold text-gray-900 px-5"/>
+      <TypeSelect type={type} setType={setType} setChatHistory={setChatHistory} setMessage={setMessage} setResponse={setResponse} className=""/>
       <div className="flex items-center border border-2 rounded-lg m-5 border-blue-500 py-2">
         <input
           className="appearance-none bg-transparent border-none w-full dark:text-white text-gray-700 mr-3 px-2 focus:outline-none"
